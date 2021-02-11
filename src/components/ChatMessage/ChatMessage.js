@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./ChatMessage.css";
-import readMessage from "../../../img/read.svg";
-import unreadMessage from "../../../img/unread.svg";
+import readMessage from "../../img/read.svg";
+import unreadMessage from "../../img/unread.svg";
 import Moment from "react-moment";
 
 const ChatMessage = ({ message: { msg, time, from, to, read } }) => {

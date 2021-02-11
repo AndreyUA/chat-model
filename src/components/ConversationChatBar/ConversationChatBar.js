@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import "./ConversationChatBar.css";
-import ChatMessage from "../Conversation/ChatMessage/ChatMessage";
+import ChatMessage from "../ChatMessage/ChatMessage";
 
 const CHAT = [
   { msg: "hello", time: new Date(), from: "username", to: "me", read: true },
