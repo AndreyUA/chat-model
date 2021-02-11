@@ -6,13 +6,12 @@ import loupe from "../../img/loupe.svg";
 import phone from "../../img/phone.svg";
 import camera from "../../img/camera.svg";
 import more from "../../img/more.svg";
-import avatar from '../../img/avatar_.jpg'
 
 const ConversationSearchBar = (props) => {
   return (
     <div className="ConversationSearchBar">
       <div className="ConversationSearchBar_user">
-          <img className="ConversationSearchBar_user_avatar" src={avatar} alt="avatar"/>
+          <img className="ConversationSearchBar_user_avatar" src="" alt="avatar"/>
           <div className="ConversationSearchBar_user_info">
               <p className="ConversationSearchBar_user_name">Andrey</p>
               <p className="ConversationSearchBar_user_phone">(303) 555-0105</p>

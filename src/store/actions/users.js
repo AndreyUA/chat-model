@@ -1,4 +1,4 @@
-import { GET_USERS } from "./types";
+import { GET_USERS, SET_USER } from "./types";
 import { USERS } from "../../db/db";
 
 export const getUsers = () => (dispatch) => {
@@ -10,4 +10,13 @@ export const getUsers = () => (dispatch) => {
       payload: users,
     });
   }, 2000);
+};
+
+export const setUser = (id) => (dispatch) => {
+  const user = USERS.filter((USER) => USER.id === id);
+
+  dispatch({
+    type: SET_USER,
+    payload: user[0],
+  });
 };

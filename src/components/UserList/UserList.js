@@ -4,90 +4,38 @@ import PropTypes from "prop-types";
 import "./UserList.css";
 import UserSearchBar from "../UserSearchBar/UserSearchBar";
 import UserListItem from "../UserListItem/UserListItem";
-import avatar from "../../img/avatar_.jpg";
 
 import { connect } from "react-redux";
 import { getUsers } from "../../store/actions/users";
-
-const USERS = [
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-  {
-    name: "Andrey",
-    msg: "hello",
-    avatar,
-    time: new Date(),
-  },
-];
+import Loader from "../Loader/Loader";
 
 // редакс настроен
 // теперь нужны фото, загрузчик и тд
 
-const UserList = ({ getUsers, users: {users, loading} }) => {
+const UserList = ({ getUsers, users: { users, loading } }) => {
   useEffect(() => {
     getUsers();
   }, [getUsers]);
   return (
     <div className="UserList">
       <UserSearchBar />
-      {USERS.map((user, index) => {
-        return (
-          <Fragment key={index}>
-            <UserListItem
-              name={user.name}
-              msg={user.msg}
-              avatar={user.avatar}
-              time={user.time}
-            />
-          </Fragment>
-        );
-      })}
+      {loading ? (
+        <Loader />
+      ) : (
+        users.map((user) => {
+          return (
+            <Fragment key={user.id}>
+              <UserListItem
+                userId={user.id}
+                name={user.name}
+                msg={user.lastMsg.msg}
+                avatar={user.avatar}
+                time={user.lastMsg.time}
+              />
+            </Fragment>
+          );
+        })
+      )}
     </div>
   );
 };
