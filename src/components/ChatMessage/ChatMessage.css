@@ -7,6 +7,10 @@
   margin: 4px 0;
 }
 
+.ChatMessage:first-child {
+  margin-top: 35px;
+}
+
 .ChatMessage:last-child {
   margin-bottom: 35px;
 }

@@ -3,13 +3,15 @@ import PropTypes from "prop-types";
 
 import "./UserListItem.css";
 import Moment from "react-moment";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { setUser } from "../../store/actions/users";
 
 const UserListItem = ({ name, msg, avatar, time, userId, users, setUser }) => {
   return (
-    <div
+    <Link
+      to={`/friend/${userId}`}
       onClick={() => setUser(userId)}
       className={
         users.user && users.user.id === userId
@@ -28,7 +30,7 @@ const UserListItem = ({ name, msg, avatar, time, userId, users, setUser }) => {
           */}
         <Moment date={time} format="HH:mm" />
       </div>
-    </div>
+    </Link>
   );
 };
 

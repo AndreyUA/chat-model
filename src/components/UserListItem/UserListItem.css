@@ -7,6 +7,8 @@
   border-top: 1px solid #d7dbe6;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
+
+  text-decoration: none;
 }
 
 .UserListItem:hover {

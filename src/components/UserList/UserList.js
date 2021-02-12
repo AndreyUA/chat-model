@@ -9,9 +9,6 @@ import { connect } from "react-redux";
 import { getUsers } from "../../store/actions/users";
 import Loader from "../Loader/Loader";
 
-// редакс настроен
-// теперь нужны фото, загрузчик и тд
-
 const UserList = ({ getUsers, users: { users, loading } }) => {
   useEffect(() => {
     getUsers();
