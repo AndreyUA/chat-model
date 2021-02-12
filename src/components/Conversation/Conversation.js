@@ -1,29 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import "./Conversation.css";
 import ConversationSearchBar from "../ConversationSearchBar/ConversationSearchBar";
-import ConversationChatBar from "../ConversationChatBar/ConversationChatBar";
 import ConversationChatInput from "../ConversationChatInput/ConversationChatInput";
 
-// обработать теперь правильную работы без ссылки
-// загружать профиль и тд ТОЛЬКО после перехода по ссылкам
-// сейчас профиль выбирается ТОЛЬКО по клику на список друзей
-// уже почти получилось
-
-const Conversation = ({ match }) => {
-  useEffect(() => {
-    console.log(match.params.id);
-  });
+const Conversation = ({ children }) => {
   return (
     <div className="Conversation">
       <ConversationSearchBar />
-      <ConversationChatBar />
+      {children}
       <ConversationChatInput />
     </div>
   );
 };
 
-Conversation.propTypes = {};
+Conversation.propTypes = {
+  children: PropTypes.object.isRequired,
+};
 
 export default Conversation;

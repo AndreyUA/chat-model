@@ -8,8 +8,11 @@
   overflow: auto;
 }
 
-
 .ConversationChatBar_warning {
   color: #01859c;
   margin-top: 400px;
+}
+
+.ConversationChatBar_loader {
+  margin-top: 300px;
 }

@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import Conversation from "./components/Conversation/Conversation";
 import Layout from "./components/Layout/Layout";
 import UserList from "./components/UserList/UserList";
+import Conversation from "./components/Conversation/Conversation";
+import ConversationChatBar from "./components/ConversationChatBar/ConversationChatBar";
+import ConversationChatEmpty from "./components/ConversationChatEmpty/ConversationChatEmpty";
 
 import { Provider } from "react-redux";
 import store from "./store/index";
@@ -14,11 +16,13 @@ function App() {
       <BrowserRouter>
         <Layout>
           <UserList />
-          <Switch>
-            <Route path="/friend/:id" exact component={Conversation} />
-            <Route path="/" exact component={Conversation} />
-            <Redirect to={"/"} />
-          </Switch>
+          <Conversation>
+            <Switch>
+              <Route path="/" exact component={ConversationChatEmpty} />
+              <Route path="/friend/:id" component={ConversationChatBar} />
+              <Redirect to={"/"} />
+            </Switch>
+          </Conversation>
         </Layout>
       </BrowserRouter>
     </Provider>
