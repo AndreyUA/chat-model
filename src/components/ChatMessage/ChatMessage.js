@@ -7,7 +7,7 @@ import unreadMessage from "../../img/unread.svg";
 import Moment from "react-moment";
 
 const ChatMessage = ({ message: { msg, time, from, to, read } }) => {
-  const classes = ["ChatMessage", "asd"];
+  const classes = ["ChatMessage"];
   from === "me"
     ? classes.push("ChatMessage-from_me")
     : classes.push("ChatMessage-to_me");

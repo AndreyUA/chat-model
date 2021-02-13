@@ -1,25 +1,22 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 
 import "./ConversationChatBar.css";
 import ChatMessage from "../ChatMessage/ChatMessage";
-
-import { connect } from "react-redux";
-import { getPrivateMessages } from "../../store/actions/messages";
-
-import { CHAT } from "../../db/db";
 import Loader from "../Loader/Loader";
 
-const ConversationChatBar = ({
-  users,
-  messages: { loading, privateMessage },
-  getPrivateMessages,
-  match,
-}) => {
+import { connect } from "react-redux";
+
+const getPrivateMessages = (id, allMessages) =>
+  allMessages.filter((message) => +message.friendId === +id);
+
+const ConversationChatBar = ({ users, messages: { allMessages }, match }) => {
+  const [privateMessages, setPrivateMessages] = useState([]);
+
   useEffect(() => {
-    getPrivateMessages(match.params.id);
-  }, [match, getPrivateMessages]);
+    setPrivateMessages(getPrivateMessages(match.params.id, allMessages));
+  }, [match, allMessages]);
 
   if (!users.user) {
     return <Redirect to={"/"} />;
@@ -27,17 +24,23 @@ const ConversationChatBar = ({
 
   return (
     <div className="ConversationChatBar">
-      {privateMessage ? (
-        privateMessage.map((message) => {
-          return (
-            <Fragment key={message.id}>
-              <ChatMessage message={message} />
-            </Fragment>
-          );
-        })
+      {privateMessages.length > 0 ? (
+        allMessages && privateMessages ? (
+          privateMessages.map((message) => {
+            return (
+              <Fragment key={message.id}>
+                <ChatMessage message={message} />
+              </Fragment>
+            );
+          })
+        ) : (
+          <div className="ConversationChatBar_loader">
+            <Loader />
+          </div>
+        )
       ) : (
-        <div className="ConversationChatBar_loader">
-          <Loader />
+        <div className="ConversationChatBar">
+          <h2 className="ConversationChatBar_warning">Start your chat now!</h2>
         </div>
       )}
     </div>
@@ -49,17 +52,9 @@ const mapStateToProps = (state) => ({
   messages: state.messages,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getPrivateMessages: (id) => dispatch(getPrivateMessages(id)),
-});
-
 ConversationChatBar.propTypes = {
   users: PropTypes.object.isRequired,
   messages: PropTypes.object.isRequired,
-  getPrivateMessages: PropTypes.func.isRequired,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConversationChatBar);
+export default connect(mapStateToProps)(ConversationChatBar);

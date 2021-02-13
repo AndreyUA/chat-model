@@ -1,7 +1,4 @@
-import {
-  GET_ALL_MESSAGES,
-  GET_PRIVATE_MESSAGES,
-} from "./types";
+import { ADD_MESSAGE, GET_ALL_MESSAGES } from "./types";
 import { CHAT } from "../../db/db";
 
 export const getAllMessages = () => (dispatch) => {
@@ -15,18 +12,9 @@ export const getAllMessages = () => (dispatch) => {
   }, 2000);
 };
 
-export const getPrivateMessages = (id) => (dispatch) => {
-  const privateMessages = CHAT.filter((message) => +message.friendId === +id);
-
+export const addMessage = (msg) => (dispatch) => {
   dispatch({
-    type: GET_PRIVATE_MESSAGES,
-    payload: null,
+    type: ADD_MESSAGE,
+    payload: msg,
   });
-
-  setTimeout(() => {
-    dispatch({
-      type: GET_PRIVATE_MESSAGES,
-      payload: privateMessages,
-    });
-  }, 1000);
 };

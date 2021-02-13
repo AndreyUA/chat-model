@@ -3,14 +3,25 @@ import PropTypes from "prop-types";
 
 import "./ConversationChatInput.css";
 import send from "../../img/send.svg";
+import Message from "../../db/models/message";
 
-const ConversationChatInput = (props) => {
+import { connect } from "react-redux";
+import { addMessage } from "../../store/actions/messages";
+
+const ConversationChatInput = ({ user, addMessage }) => {
   const [message, setMessage] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log(message);
+    const newMsgs = new Message(
+      user.id,
+      message,
+      "me",
+      "friend"
+    ).createMessage();
+
+    addMessage(newMsgs);
     setMessage("");
   };
 
@@ -42,6 +53,20 @@ const ConversationChatInput = (props) => {
   );
 };
 
-ConversationChatInput.propTypes = {};
+const mapStateToProps = (state) => ({
+  user: state.users.user,
+});
 
-export default ConversationChatInput;
+const mapDispatchToProps = (dispatch) => ({
+  addMessage: (msg) => dispatch(addMessage(msg)),
+});
+
+ConversationChatInput.propTypes = {
+  user: PropTypes.object,
+  addMessage: PropTypes.func.isRequired,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConversationChatInput);

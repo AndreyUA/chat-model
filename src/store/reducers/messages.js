@@ -1,8 +1,7 @@
-import { GET_ALL_MESSAGES, GET_PRIVATE_MESSAGES } from "../actions/types";
+import { ADD_MESSAGE, GET_ALL_MESSAGES } from "../actions/types";
 
 const initialState = {
-  messages: null,
-  privateMessage: null,
+  allMessages: [],
   loading: true,
 };
 
@@ -13,15 +12,15 @@ export default function messages(state = initialState, action) {
     case GET_ALL_MESSAGES:
       return {
         ...state,
-        messages: payload,
+        allMessages: payload,
         loading: false,
       };
 
-    case GET_PRIVATE_MESSAGES:
+    case ADD_MESSAGE:
+      console.log(state.allMessages.length);
       return {
         ...state,
-        privateMessage: payload,
-        loading: false,
+        allMessages: [...state.allMessages, payload],
       };
 
     default:
