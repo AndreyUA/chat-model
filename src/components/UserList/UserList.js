@@ -26,19 +26,21 @@ const UserList = ({
       {loading ? (
         <Loader />
       ) : (
-        users.map((user) => {
-          return (
-            <Fragment key={user.id}>
-              <UserListItem
-                userId={user.id}
-                name={user.name}
-                msg={user.lastMsg.msg}
-                avatar={user.avatar}
-                time={user.lastMsg.time}
-              />
-            </Fragment>
-          );
-        })
+        <div className="UserList_wrapper">
+          {users.map((user) => {
+            return (
+              <Fragment key={user.id}>
+                <UserListItem
+                  userId={user.id}
+                  name={user.name}
+                  msg={user.lastMsg.msg}
+                  avatar={user.avatar}
+                  time={user.lastMsg.time}
+                />
+              </Fragment>
+            );
+          })}
+        </div>
       )}
     </div>
   );
@@ -62,11 +64,8 @@ UserList.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
-
 // убрать загрузку с чата
-// добавить обертку для окна с друзьями
 // если с другом не общался - написать НАЧНИТЕ ОБЩЕНИЕ и тд
 // отправка сообщений
 // изменить имена
 // в БД поменять время и обработать если не СЕГОДНЯ
-
