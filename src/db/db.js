@@ -12,101 +12,61 @@ import avatar10 from "./avatars/10.jpg";
 export const USERS = [
   {
     id: 1,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Kristin Watson",
     avatar: avatar1,
     phoneNumber: "(303) 555-1111",
   },
   {
     id: 2,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Max Flores",
     avatar: avatar2,
     phoneNumber: "(303) 555-2222",
   },
   {
     id: 3,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Philip Mccoy",
     avatar: avatar3,
     phoneNumber: "(303) 555-3333",
   },
   {
     id: 4,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Thomas Ball",
     avatar: avatar4,
     phoneNumber: "(303) 555-4444",
   },
   {
     id: 5,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Mya Mya",
     avatar: avatar5,
     phoneNumber: "(303) 555-5555",
   },
   {
     id: 6,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Claire Murphy",
     avatar: avatar6,
     phoneNumber: "(303) 555-6666",
   },
   {
     id: 7,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Kung Fu Panda",
     avatar: avatar7,
     phoneNumber: "(303) 555-7777",
   },
   {
     id: 8,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Samantha Smith",
     avatar: avatar8,
     phoneNumber: "(303) 555-8888",
   },
   {
     id: 9,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "John Doe",
     avatar: avatar9,
     phoneNumber: "(303) 555-9999",
   },
   {
     id: 10,
-    name: "Andrey",
-    lastMsg: {
-      msg: "hello",
-      time: new Date(),
-    },
+    name: "Stoned Fox",
     avatar: avatar10,
     phoneNumber: "(303) 555-0000",
   },
@@ -121,7 +81,7 @@ export const CHAT = [
     userId: "myRandomUserId",
     friendId: 1,
     msg: "hello",
-    time: new Date(),
+    time: new Date(2021, 1, 26, 11, 20),
     from: "friend",
     to: "me",
     read: true,
@@ -184,7 +144,7 @@ export const CHAT = [
     userId: "myRandomUserId",
     friendId: 2,
     msg: "hi, are you busy now?",
-    time: new Date(),
+    time: new Date(2021, 1, 26, 11, 20),
     from: "me",
     to: "friend",
     read: false,
@@ -194,7 +154,7 @@ export const CHAT = [
   // ------------------------------------------------------
 
   // EMPTY
-  
+
   // ------------------------------------------------------
   // 4
   // ------------------------------------------------------

@@ -10,16 +10,12 @@ import { connect } from "react-redux";
 import { getUsers } from "../../store/actions/users";
 import { getAllMessages } from "../../store/actions/messages";
 
-const UserList = ({
-  getUsers,
-  getAllMessages,
-  users: { users, loading },
-  messages,
-}) => {
+const UserList = ({ getUsers, getAllMessages, users: { users, loading } }) => {
   useEffect(() => {
     getUsers();
     getAllMessages();
   }, [getUsers, getAllMessages]);
+  
   return (
     <div className="UserList">
       <UserSearchBar />
@@ -30,13 +26,7 @@ const UserList = ({
           {users.map((user) => {
             return (
               <Fragment key={user.id}>
-                <UserListItem
-                  userId={user.id}
-                  name={user.name}
-                  msg={user.lastMsg.msg}
-                  avatar={user.avatar}
-                  time={user.lastMsg.time}
-                />
+                <UserListItem user={user} />
               </Fragment>
             );
           })}
@@ -48,7 +38,6 @@ const UserList = ({
 
 const mapStateToProps = (state) => ({
   users: state.users,
-  messages: state.messages,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -59,14 +48,9 @@ const mapDispatchToProps = (dispatch) => ({
 UserList.propTypes = {
   getUsers: PropTypes.func.isRequired,
   users: PropTypes.object.isRequired,
-  messages: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
-
-// изменить имена
 // изменить времена
-// в БД поменять время и обработать если не СЕГОДНЯ
-
-// нужно обработать отправку сообщений ва чате по ЕНТЕРУ
+// сделать прокрутку чата вниз

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import "./ChatMessage.css";
 import readMessage from "../../img/read.svg";
 import unreadMessage from "../../img/unread.svg";
-import Moment from "react-moment";
+import Time from "../Time/Time";
 
 const ChatMessage = ({ message: { msg, time, from, to, read } }) => {
   const classes = ["ChatMessage"];
@@ -19,7 +19,7 @@ const ChatMessage = ({ message: { msg, time, from, to, read } }) => {
           <p>{msg}</p>
         </div>
         <div className="ChatMessage_content-time">
-          <Moment date={time} format="HH:mm" />
+          <Time time={time} />
           {to !== "me" ? (
             read ? (
               <img
@@ -41,6 +41,8 @@ const ChatMessage = ({ message: { msg, time, from, to, read } }) => {
   );
 };
 
-ChatMessage.propTypes = {};
+ChatMessage.propTypes = {
+  message: PropTypes.object.isRequired,
+};
 
 export default ChatMessage;

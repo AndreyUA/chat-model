@@ -17,7 +17,6 @@ export default function messages(state = initialState, action) {
       };
 
     case ADD_MESSAGE:
-      console.log(state.allMessages.length);
       return {
         ...state,
         allMessages: [...state.allMessages, payload],

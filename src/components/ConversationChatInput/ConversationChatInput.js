@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import "./ConversationChatInput.css";
 import send from "../../img/send.svg";
+import sendActive from "../../img/send-active.svg";
 import Message from "../../db/models/message";
 
 import { connect } from "react-redux";
@@ -11,9 +12,7 @@ import { addMessage } from "../../store/actions/messages";
 const ConversationChatInput = ({ user, addMessage }) => {
   const [message, setMessage] = useState("");
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-
+  const sendMessage = () => {
     const newMsgs = new Message(
       user.id,
       message,
@@ -25,6 +24,24 @@ const ConversationChatInput = ({ user, addMessage }) => {
     setMessage("");
   };
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    sendMessage();
+  };
+
+  const keyDownHandler = (e) => {
+    if (message !== "" && user) {
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        e.preventDefault();
+
+        sendMessage();
+      }
+    } else if (e.code === "Enter" || e.code === "NumpadEnter") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="ConversationChatInput">
       <form
@@ -33,6 +50,8 @@ const ConversationChatInput = ({ user, addMessage }) => {
       >
         <p>
           <textarea
+            onKeyDown={(e) => keyDownHandler(e)}
+            disabled={user ? false : true}
             className="ConversationChatInput_text"
             onChange={(e) => setMessage(e.target.value)}
             name="text"
@@ -40,13 +59,24 @@ const ConversationChatInput = ({ user, addMessage }) => {
             value={message}
           ></textarea>
         </p>
-
-        <button className="ConversationChatInput_btn" type="submit">
-          <img
-            className="ConversationChatInput_btn_pic"
-            src={send}
-            alt="send-message"
-          />
+        <button
+          disabled={message !== "" && user ? false : true}
+          className="ConversationChatInput_btn"
+          type="submit"
+        >
+          {message !== "" && user ? (
+            <img
+              className="ConversationChatInput_btn_pic"
+              src={sendActive}
+              alt="send-message"
+            />
+          ) : (
+            <img
+              className="ConversationChatInput_btn_pic"
+              src={send}
+              alt="send-message"
+            />
+          )}
         </button>
       </form>
     </div>

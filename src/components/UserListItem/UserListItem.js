@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import "./UserListItem.css";
-import Moment from "react-moment";
 import { Link } from "react-router-dom";
+import Time from "../Time/Time";
 
 import { connect } from "react-redux";
 import { setUser } from "../../store/actions/users";
 
-const UserListItem = ({ name, msg, avatar, time, userId, users, setUser }) => {
+const getLastPrivateMessages = (id, allMessages) => {
+  const all = allMessages.filter((message) => +message.friendId === +id);
+
+  return all[all.length - 1];
+};
+
+const UserListItem = ({
+  user: { id, name, avatar },
+  users,
+  setUser,
+  allMessages,
+}) => {
+  const [lastMessage, setLastMessage] = useState({ msg: "" });
+
+  useEffect(() => {
+    setLastMessage(getLastPrivateMessages(id, allMessages));
+  }, [id, allMessages]);
+  
   return (
     <Link
-      to={`/friend/${userId}`}
-      onClick={() => setUser(userId)}
+      to={`/friend/${id}`}
+      onClick={() => setUser(id)}
       className={
-        users.user && users.user.id === userId
+        users.user && users.user.id === id
           ? "UserListItem UserListItem-active"
           : "UserListItem"
       }
@@ -22,13 +39,18 @@ const UserListItem = ({ name, msg, avatar, time, userId, users, setUser }) => {
       <img className="UserListItem_avatar" src={avatar} alt="avatar" />
       <div className="UserListItem_content">
         <p className="UserListItem_name">{name}</p>
-        <p className="UserListItem_msg">{msg}</p>
+        {lastMessage ? (
+          <p className="UserListItem_msg">
+            {lastMessage.msg.length > 20
+              ? `${lastMessage.msg.slice(0, 20)}...`
+              : lastMessage.msg}
+          </p>
+        ) : (
+          <p className="UserListItem_msg">&#8195;</p>
+        )}
       </div>
       <div className="UserListItem_time">
-        {/*
-            ПОТОМ ВЫНЕСИ В ОТДЕЛЬНЫЙ КОМПОНЕНТ ВРЕМЯ, ТАМ БУДЕТ ЛОГИКИ МНОГО
-          */}
-        <Moment date={time} format="HH:mm" />
+        {lastMessage ? <Time time={lastMessage.time} /> : null}
       </div>
     </Link>
   );
@@ -36,6 +58,7 @@ const UserListItem = ({ name, msg, avatar, time, userId, users, setUser }) => {
 
 const mapStateToProps = (state) => ({
   users: state.users,
+  allMessages: state.messages.allMessages,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -43,8 +66,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 UserListItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  msg: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
+  allMessages: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserListItem);
