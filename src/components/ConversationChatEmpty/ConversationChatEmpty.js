@@ -1,11 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const ConversationChatEmpty = () => {
+import { connect } from "react-redux";
+
+const ConversationChatEmpty = ({ messages: { loading } }) => {
   return (
     <div className="ConversationChatBar">
-      <h2 className="ConversationChatBar_warning">Choose your friend</h2>
+      {loading ? null : (
+        <h2 className="ConversationChatBar_warning">Choose your friend</h2>
+      )}
     </div>
   );
 };
 
-export default ConversationChatEmpty;
+const mapStateToProps = (state) => ({
+  messages: state.messages,
+});
+
+ConversationChatEmpty.propTypes = {
+  messages: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(ConversationChatEmpty);

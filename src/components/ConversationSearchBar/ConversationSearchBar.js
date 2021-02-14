@@ -12,16 +12,19 @@ const ConversationSearchBar = () => {
   return (
     <div className="ConversationSearchBar">
       <ChosenFriend />
-
       <div className="ConversationSearchBar_btns">
-        <img className="ConversationSearchBar_loupe" src={loupe} alt="search" />
-        <img className="ConversationSearchBar_loupe" src={phone} alt="call" />
+        <img className="ConversationSearchBar_pic" src={loupe} alt="search" />
+        <img className="ConversationSearchBar_pic" src={phone} alt="call" />
         <img
-          className="ConversationSearchBar_loupe"
+          className="ConversationSearchBar_pic ConversationSearchBar_camera"
           src={camera}
           alt="video-call"
         />
-        <img className="ConversationSearchBar_more" src={more} alt="more" />
+        <img
+          className="ConversationSearchBar_pic ConversationSearchBar_more"
+          src={more}
+          alt="more"
+        />
       </div>
     </div>
   );

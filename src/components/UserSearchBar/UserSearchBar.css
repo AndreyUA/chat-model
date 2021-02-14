@@ -8,9 +8,13 @@
   background: #01859c;
 }
 
-.UserSearchBar_pic,
 .UserSearchBar_pic {
-    width: 20px;
-    height: 20px;
-    margin: 0 12px;
+  width: 17.5px;
+  height: 17.5px;
+  margin: 0 12px;
+}
+
+.UserSearchBar_pic:last-child {
+  width: 25px;
+  height: 25px;
 }
