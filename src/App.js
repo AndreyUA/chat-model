@@ -9,6 +9,7 @@ import ConversationChatEmpty from "./components/ConversationChatEmpty/Conversati
 
 import { Provider } from "react-redux";
 import store from "./store/index";
+import Call from "./components/Modal/Call/Call";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Redirect to={"/"} />
             </Switch>
           </Conversation>
+          <Call />
         </Layout>
       </BrowserRouter>
     </Provider>

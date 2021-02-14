@@ -62,3 +62,14 @@
   line-height: 12px;
   color: #d0ecf4;
 }
+
+.ConversationSearchBar_btn {
+  background-color: #01859c;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+.ConversationSearchBar_btn:hover {
+  cursor: pointer;
+}

@@ -8,18 +8,33 @@ import camera from "../../img/camera.svg";
 import more from "../../img/more.svg";
 import ChosenFriend from "./ChosenFriend";
 
-const ConversationSearchBar = () => {
+import { connect } from "react-redux";
+import { setModal } from "../../store/actions/modal";
+
+const ConversationSearchBar = ({ setModal, user }) => {
   return (
     <div className="ConversationSearchBar">
       <ChosenFriend />
       <div className="ConversationSearchBar_btns">
         <img className="ConversationSearchBar_pic" src={loupe} alt="search" />
-        <img className="ConversationSearchBar_pic" src={phone} alt="call" />
-        <img
-          className="ConversationSearchBar_pic ConversationSearchBar_camera"
-          src={camera}
-          alt="video-call"
-        />
+        <button
+          disabled={user ? false : true}
+          className="ConversationSearchBar_btn"
+          onClick={() => setModal()}
+        >
+          <img className="ConversationSearchBar_pic" src={phone} alt="call" />
+        </button>
+        <button
+          disabled={user ? false : true}
+          className="ConversationSearchBar_btn"
+          onClick={() => setModal()}
+        >
+          <img
+            className="ConversationSearchBar_pic ConversationSearchBar_camera"
+            src={camera}
+            alt="video-call"
+          />
+        </button>
         <img
           className="ConversationSearchBar_pic ConversationSearchBar_more"
           src={more}
@@ -30,6 +45,20 @@ const ConversationSearchBar = () => {
   );
 };
 
-ConversationSearchBar.propTypes = {};
+const mapStateToProps = (state) => ({
+  user: state.users.user,
+});
 
-export default ConversationSearchBar;
+const mapDispatchToProps = (dispatch) => ({
+  setModal: () => dispatch(setModal()),
+});
+
+ConversationSearchBar.propTypes = {
+  setModal: PropTypes.func.isRequired,
+  user: PropTypes.object,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConversationSearchBar);
