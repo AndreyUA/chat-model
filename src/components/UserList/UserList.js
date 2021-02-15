@@ -71,5 +71,5 @@ UserList.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
-// изменить времена
 // сделать прокрутку чата вниз
+// кнопки в меню чата

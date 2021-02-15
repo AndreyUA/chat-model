@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./UserListItem.css";
 import { Link } from "react-router-dom";
-import Time from "../Time/Time";
+import TimeUserItem from "../Time/TimeUserItem";
 
 import { connect } from "react-redux";
 import { setUser } from "../../store/actions/users";
@@ -41,8 +41,8 @@ const UserListItem = ({
         <p className="UserListItem_name">{name}</p>
         {lastMessage ? (
           <p className="UserListItem_msg">
-            {lastMessage.msg.length > 20
-              ? `${lastMessage.msg.slice(0, 20)}...`
+            {lastMessage.msg.length > 18
+              ? `${lastMessage.msg.slice(0, 18)}...`
               : lastMessage.msg}
           </p>
         ) : (
@@ -50,7 +50,7 @@ const UserListItem = ({
         )}
       </div>
       <div className="UserListItem_time">
-        {lastMessage ? <Time time={lastMessage.time} /> : null}
+        {lastMessage ? <TimeUserItem time={lastMessage.time} /> : null}
       </div>
     </Link>
   );

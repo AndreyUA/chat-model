@@ -7,10 +7,10 @@ import Moment from "react-moment";
 const Time = ({ time }) => {
   return (
     <>
-      {moment().diff(time) > 0 ? (
-        <Moment date={time} format="HH:mm" />
-      ) : (
+      {moment().diff(time) > 86400000 ? (
         <Moment date={time} format="YY.MM.DD, HH:mm" />
+      ) : (
+        <Moment date={time} format="HH:mm" />
       )}
     </>
   );

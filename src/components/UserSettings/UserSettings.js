@@ -5,7 +5,7 @@ import "./UserSettings.css";
 const UserSettings = () => {
   return (
     <div className="UserSettings">
-      <ul class="UserSettings_list">
+      <ul className="UserSettings_list">
         <li className="UserSettings_item">settings</li>
         <li className="UserSettings_item">my profile</li>
         <li className="UserSettings_item">share contacts</li>
