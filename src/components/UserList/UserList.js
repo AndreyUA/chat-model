@@ -1,9 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import "./UserList.css";
 import UserSearchBar from "../UserSearchBar/UserSearchBar";
 import UserListItem from "../UserListItem/UserListItem";
+import UserFilter from "../UserFilter/UserFilter";
+import UserSettings from "../UserSettings/UserSettings";
 import Loader from "../Loader/Loader";
 
 import { connect } from "react-redux";
@@ -11,6 +13,10 @@ import { getUsers } from "../../store/actions/users";
 import { getAllMessages } from "../../store/actions/messages";
 
 const UserList = ({ getUsers, getAllMessages, users: { users, loading } }) => {
+  const [filterActive, setFilterActive] = useState(false);
+  const [settingsActive, setSettingsActive] = useState(true);
+  const [filterName, setFilterName] = useState("");
+
   useEffect(() => {
     getUsers();
     getAllMessages();
@@ -18,18 +24,31 @@ const UserList = ({ getUsers, getAllMessages, users: { users, loading } }) => {
 
   return (
     <div className="UserList">
-      <UserSearchBar />
+      <UserSearchBar
+        filterActive={filterActive}
+        setFilterActive={setFilterActive}
+        settingsActive={settingsActive}
+        setSettingsActive={setSettingsActive}
+      />
+      {filterActive ? (
+        <UserFilter filterName={filterName} setFilterName={setFilterName} />
+      ) : null}
+      {settingsActive ? <UserSettings /> : null}
       {loading ? (
         <Loader />
       ) : (
         <div className="UserList_wrapper">
-          {users.map((user) => {
-            return (
-              <Fragment key={user.id}>
-                <UserListItem user={user} />
-              </Fragment>
-            );
-          })}
+          {users
+            .filter((user) =>
+              user.name.toLowerCase().includes(filterName.toLowerCase())
+            )
+            .map((user) => {
+              return (
+                <Fragment key={user.id}>
+                  <UserListItem user={user} />
+                </Fragment>
+              );
+            })}
         </div>
       )}
     </div>
