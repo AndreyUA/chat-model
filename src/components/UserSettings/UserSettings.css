@@ -6,13 +6,14 @@
   background-color: #01859c;
 }
 
-.UserSettings {
+.UserSettings_list {
   list-style: none;
   padding: 0;
 }
 
 .UserSettings_item {
   font-family: Roboto;
+  color: #fff;
   padding: 7px 20px;
   margin-bottom: 10px;
   border-radius: 5px;
