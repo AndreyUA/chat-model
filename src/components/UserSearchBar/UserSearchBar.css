@@ -11,10 +11,28 @@
 .UserSearchBar_pic {
   width: 17.5px;
   height: 17.5px;
-  margin: 0 12px;
 }
 
-.UserSearchBar_pic:last-child {
+.UserSearchBar_btn-more {
   width: 25px;
   height: 25px;
+}
+
+.UserSearchBar_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 9px;
+  background-color: #01859c;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+.UserSearchBar_btn:hover {
+  cursor: pointer;
+  background: #035e6e;
+  border-radius: 50%;
 }

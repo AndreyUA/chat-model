@@ -54,7 +54,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
 // изменить времена
 // сделать прокрутку чата вниз
-
-// убрать из редакса лишнее!
-
-// реализовать отдельно ВИДЕО и АУДИО звонок

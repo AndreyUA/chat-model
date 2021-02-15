@@ -16,7 +16,9 @@ const ConversationSearchBar = ({ setModal, user }) => {
     <div className="ConversationSearchBar">
       <ChosenFriend />
       <div className="ConversationSearchBar_btns">
-        <img className="ConversationSearchBar_pic" src={loupe} alt="search" />
+        <button className="ConversationSearchBar_btn">
+          <img className="ConversationSearchBar_pic" src={loupe} alt="search" />
+        </button>
         <button
           disabled={user ? false : true}
           className="ConversationSearchBar_btn"
@@ -35,11 +37,13 @@ const ConversationSearchBar = ({ setModal, user }) => {
             alt="video-call"
           />
         </button>
-        <img
-          className="ConversationSearchBar_pic ConversationSearchBar_more"
-          src={more}
-          alt="more"
-        />
+        <button className="ConversationSearchBar_btn">
+          <img
+            className="ConversationSearchBar_pic ConversationSearchBar_more"
+            src={more}
+            alt="more"
+          />
+        </button>
       </div>
     </div>
   );
