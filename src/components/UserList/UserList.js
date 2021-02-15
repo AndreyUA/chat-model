@@ -14,7 +14,7 @@ import { getAllMessages } from "../../store/actions/messages";
 
 const UserList = ({ getUsers, getAllMessages, users: { users, loading } }) => {
   const [filterActive, setFilterActive] = useState(false);
-  const [settingsActive, setSettingsActive] = useState(true);
+  const [settingsActive, setSettingsActive] = useState(false);
   const [filterName, setFilterName] = useState("");
 
   useEffect(() => {
