@@ -1,0 +1,68 @@
+.UserListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  border-top: 1px solid #d7dbe6;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  text-decoration: none;
+}
+
+.UserListItem:hover {
+  background: #e5f3f8;
+}
+
+.UserListItem-active {
+  background: #e5f3f8;
+}
+
+.UserListItem:last-child {
+  border-bottom: 1px solid #d7dbe6;
+}
+
+.UserListItem_avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 15px;
+}
+
+.UserListItem_name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #485062;
+}
+
+.UserListItem_msg {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #687287;
+}
+
+.UserListItem_time {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.UserListItem_time time {
+  margin: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  color: #c1c9da;
+}

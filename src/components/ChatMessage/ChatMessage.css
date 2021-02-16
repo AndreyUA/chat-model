@@ -1,0 +1,80 @@
+.ChatMessage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 60px;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.ChatMessage:first-child {
+  margin-top: 35px;
+}
+
+.ChatMessage:last-child {
+  margin-bottom: 35px;
+}
+
+.ChatMessage-from_me {
+  justify-content: flex-end;
+}
+
+.ChatMessage-to_me {
+  justify-content: flex-start;
+}
+
+.ChatMessage_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #d7dbe6;
+  box-sizing: border-box;
+  border-radius: 0px 10px 10px 10px;
+  height: 100%;
+  min-width: 140px;
+  padding: 6px 12px;
+  margin: 0 24px;
+}
+
+.ChatMessage-from_me > .ChatMessage_content {
+  background: #e5f3f8;
+  border-radius: 10px 10px 0px 10px;
+}
+
+.ChatMessage_content p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #182a40;
+}
+
+.ChatMessage_content time {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #c1c9da;
+}
+
+.ChatMessage_content-time {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ChatMessage-from_me time {
+  color: #009bb7;
+}
+
+.ChatMessage_content_pic {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}

@@ -1,0 +1,78 @@
+.ConversationSearchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: #01859c;
+}
+
+.ConversationSearchBar_btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ConversationSearchBar_pic {
+  width: 17.5px;
+  height: 17.5px;
+}
+
+.ConversationSearchBar_camera,
+.ConversationSearchBar_more {
+  width: 24px;
+  height: 24px;
+}
+
+.ConversationSearchBar_user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 40px;
+}
+
+.ConversationSearchBar_user_avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 10px 0 24px;
+}
+
+.ConversationSearchBar_user_name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+}
+
+.ConversationSearchBar_user_phone {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #d0ecf4;
+}
+
+.ConversationSearchBar_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 9px;
+  background-color: #01859c;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+.ConversationSearchBar_btn:hover {
+  cursor: pointer;
+  background: #035e6e;
+  border-radius: 50%;
+}
