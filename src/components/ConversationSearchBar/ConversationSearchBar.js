@@ -16,6 +16,8 @@ const ConversationSearchBar = ({
   user,
   setFilterActive,
   filterActive,
+  settingsActive,
+  setSettingAsctive,
 }) => {
   return (
     <div className="ConversationSearchBar">
@@ -48,7 +50,13 @@ const ConversationSearchBar = ({
             alt="video-call"
           />
         </button>
-        <button className="ConversationSearchBar_btn">
+        <button
+          disabled={user ? false : true}
+          className="ConversationSearchBar_btn"
+          onClick={() => {
+            setSettingAsctive(!settingsActive);
+          }}
+        >
           <img
             className="ConversationSearchBar_pic ConversationSearchBar_more"
             src={more}
@@ -73,6 +81,8 @@ ConversationSearchBar.propTypes = {
   setFilterActive: PropTypes.func.isRequired,
   filterActive: PropTypes.bool,
   user: PropTypes.object,
+  settingsActive: PropTypes.bool,
+  setSettingAsctive: PropTypes.func.isRequired,
 };
 
 export default connect(

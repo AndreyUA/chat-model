@@ -17,7 +17,7 @@ const ConversationFilter = ({
         onChange={(e) => setFilterMessage(e.target.value)}
         value={filterMessage}
         type="text"
-        placeholder="Search message by name..."
+        placeholder="Search..."
       />
     </div>
   );
