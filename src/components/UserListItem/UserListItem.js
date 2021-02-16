@@ -25,7 +25,7 @@ const UserListItem = ({
   useEffect(() => {
     setLastMessage(getLastPrivateMessages(id, allMessages));
   }, [id, allMessages]);
-  
+
   return (
     <Link
       to={`/friend/${id}`}
@@ -69,6 +69,7 @@ UserListItem.propTypes = {
   user: PropTypes.object.isRequired,
   users: PropTypes.object.isRequired,
   allMessages: PropTypes.array.isRequired,
+  setUser: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserListItem);

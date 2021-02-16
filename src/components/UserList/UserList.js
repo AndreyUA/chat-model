@@ -66,6 +66,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 UserList.propTypes = {
   getUsers: PropTypes.func.isRequired,
+  getAllMessages: PropTypes.func.isRequired,
   users: PropTypes.object.isRequired,
 };
 

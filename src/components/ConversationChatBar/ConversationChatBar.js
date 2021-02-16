@@ -63,6 +63,7 @@ const mapStateToProps = (state) => ({
 ConversationChatBar.propTypes = {
   users: PropTypes.object.isRequired,
   messages: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(ConversationChatBar);

@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
+import Call from "./components/Modal/Call/Call";
 import Layout from "./components/Layout/Layout";
 import UserList from "./components/UserList/UserList";
 import Conversation from "./components/Conversation/Conversation";
@@ -9,7 +10,6 @@ import ConversationChatEmpty from "./components/ConversationChatEmpty/Conversati
 
 import { Provider } from "react-redux";
 import store from "./store/index";
-import Call from "./components/Modal/Call/Call";
 
 function App() {
   return (
