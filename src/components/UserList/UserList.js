@@ -71,5 +71,4 @@ UserList.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
 
-// сделать прокрутку чата вниз
 // кнопки в меню чата

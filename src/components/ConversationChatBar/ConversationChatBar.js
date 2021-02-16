@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 
@@ -14,16 +14,24 @@ const getPrivateMessages = (id, allMessages) =>
 const ConversationChatBar = ({ users, messages: { allMessages }, match }) => {
   const [privateMessages, setPrivateMessages] = useState([]);
 
+  const scrollBlock = useRef(null);
+
   useEffect(() => {
     setPrivateMessages(getPrivateMessages(match.params.id, allMessages));
   }, [match, allMessages]);
+
+  useEffect(() => {
+    if (scrollBlock.current) {
+      scrollBlock.current.scrollTop = scrollBlock.current.scrollHeight;
+    }
+  });
 
   if (!users.user) {
     return <Redirect to={"/"} />;
   }
 
   return (
-    <div className="ConversationChatBar">
+    <div ref={scrollBlock} className="ConversationChatBar">
       {privateMessages.length > 0 ? (
         allMessages && privateMessages ? (
           privateMessages.map((message) => {
