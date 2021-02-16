@@ -1,7 +1,12 @@
-import { ADD_MESSAGE, GET_ALL_MESSAGES } from "../actions/types";
+import {
+  ADD_MESSAGE,
+  GET_ALL_MESSAGES,
+  SET_MESSAGE_FILTER,
+} from "../actions/types";
 
 const initialState = {
   allMessages: [],
+  filterMessage: "",
   loading: true,
 };
 
@@ -20,6 +25,12 @@ export default function messages(state = initialState, action) {
       return {
         ...state,
         allMessages: [...state.allMessages, payload],
+      };
+
+    case SET_MESSAGE_FILTER:
+      return {
+        ...state,
+        filterMessage: payload,
       };
 
     default:

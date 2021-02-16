@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, GET_ALL_MESSAGES } from "./types";
+import { ADD_MESSAGE, GET_ALL_MESSAGES, SET_MESSAGE_FILTER } from "./types";
 import { CHAT } from "../../db/db";
 
 export const getAllMessages = () => (dispatch) => {
@@ -16,5 +16,12 @@ export const addMessage = (msg) => (dispatch) => {
   dispatch({
     type: ADD_MESSAGE,
     payload: msg,
+  });
+};
+
+export const setFilterMessage = (txt) => (dispatch) => {
+  dispatch({
+    type: SET_MESSAGE_FILTER,
+    payload: txt,
   });
 };

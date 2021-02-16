@@ -11,7 +11,11 @@ import { connect } from "react-redux";
 const getPrivateMessages = (id, allMessages) =>
   allMessages.filter((message) => +message.friendId === +id);
 
-const ConversationChatBar = ({ users, messages: { allMessages }, match }) => {
+const ConversationChatBar = ({
+  users,
+  messages: { allMessages, filterMessage },
+  match,
+}) => {
   const [privateMessages, setPrivateMessages] = useState([]);
 
   const scrollBlock = useRef(null);
@@ -34,13 +38,27 @@ const ConversationChatBar = ({ users, messages: { allMessages }, match }) => {
     <div ref={scrollBlock} className="ConversationChatBar">
       {privateMessages.length > 0 ? (
         allMessages && privateMessages ? (
-          privateMessages.map((message) => {
-            return (
-              <Fragment key={message.id}>
-                <ChatMessage message={message} />
-              </Fragment>
-            );
-          })
+          filterMessage !== "" ? (
+            privateMessages
+              .filter((message) =>
+                message.msg.toLowerCase().includes(filterMessage.toLowerCase())
+              )
+              .map((message) => {
+                return (
+                  <Fragment key={message.id}>
+                    <ChatMessage message={message} />
+                  </Fragment>
+                );
+              })
+          ) : (
+            privateMessages.map((message) => {
+              return (
+                <Fragment key={message.id}>
+                  <ChatMessage message={message} />
+                </Fragment>
+              );
+            })
+          )
         ) : (
           <div className="ConversationChatBar_loader">
             <Loader />

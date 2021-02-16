@@ -1,4 +1,4 @@
-.UserFilter {
+.ConversationFilter {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -9,10 +9,10 @@
   margin: 10px 0;
 }
 
-.UserFilter_input {
+.ConversationFilter_input {
   box-sizing: border-box;
   height: 30px;
-  width: 300px;
+  width: 80%;
   border: none;
   padding: 10px;
   border-radius: 5px;

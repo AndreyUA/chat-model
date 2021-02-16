@@ -11,12 +11,23 @@ import ChosenFriend from "./ChosenFriend";
 import { connect } from "react-redux";
 import { setModal } from "../../store/actions/modal";
 
-const ConversationSearchBar = ({ setModal, user }) => {
+const ConversationSearchBar = ({
+  setModal,
+  user,
+  setFilterActive,
+  filterActive,
+}) => {
   return (
     <div className="ConversationSearchBar">
       <ChosenFriend />
       <div className="ConversationSearchBar_btns">
-        <button className="ConversationSearchBar_btn">
+        <button
+          disabled={user ? false : true}
+          className="ConversationSearchBar_btn"
+          onClick={() => {
+            setFilterActive(!filterActive);
+          }}
+        >
           <img className="ConversationSearchBar_pic" src={loupe} alt="search" />
         </button>
         <button
@@ -59,6 +70,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 ConversationSearchBar.propTypes = {
   setModal: PropTypes.func.isRequired,
+  setFilterActive: PropTypes.func.isRequired,
+  filterActive: PropTypes.bool,
   user: PropTypes.object,
 };
 
